@@ -14,6 +14,13 @@ public partial class PlayerDashState : PlayerState
 
     public override void _PhysicsProcess(double delta)
     {
+        if(!characterNode.IsOnFloor())
+        {
+            GD.Print("Test");
+            Vector3 velocity = characterNode.Velocity;
+            velocity.Y -= 9.8f;
+            characterNode.Velocity = velocity;
+        }
         characterNode.MoveAndSlide();
         characterNode.Flip();
     }
