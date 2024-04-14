@@ -6,17 +6,8 @@ public partial class Player : CharacterBody3D
     [ExportGroup("Required Nodes")]
     [Export] public AnimationPlayer animPlayerNode {get; private set;}
     [Export] public Sprite3D spriteNode {get; private set;}
-    private Vector2 direction = new();
-
-
-    public override void _PhysicsProcess(double delta)
-    {
-        Velocity = new(direction.X, 0, direction.Y);
-        Velocity *= 5;
-
-        MoveAndSlide();
-        Flip();
-    }
+    [Export] public StateMachine stateMachineNode {get; private set;}
+    public Vector2 direction = new();
 
     public override void _Input(InputEvent @event)
     {
@@ -26,7 +17,7 @@ public partial class Player : CharacterBody3D
         );
     }
 
-    private void Flip()
+    public void Flip()
     {
         bool isNotMovingHorizontally = Velocity.X == 0;
 
