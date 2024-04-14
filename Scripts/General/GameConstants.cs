@@ -12,7 +12,7 @@ public class GameConstants
     public const string INPUTS_MOVE_BACKWARD = "MoveBackward";
     public const string INPUTS_Dash = "Dash";
 
-    // State
-    public const int STATE_NOTIFICATION_ENABLE = 5001;
-    public const int STATE_NOTIFICATION_DISABLE = 5002;
+    // Notifications
+    public const int NOTIFICATION_ENTER_STATE = 5001;
+    public const int NOTIFICATION_EXIT_STATE = 5002;
 }
