@@ -1,17 +1,15 @@
 using Godot;
 using System;
 
-public partial class PlayerDashState : Node
+public partial class PlayerDashState : PlayerState
 {
-    private Player characterNode;
     [Export] private Timer dashTimerNode;
-    [Export] private float speed = 20;
+    [Export(PropertyHint.Range,"0,50,0.5")] private float speed = 20;
 
     public override void _Ready()
     {
-        characterNode = GetOwner<Player>();
+        base._Ready();
         dashTimerNode.Timeout += HandleDashTimeout;
-        SetPhysicsProcess(false);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -20,36 +18,21 @@ public partial class PlayerDashState : Node
         characterNode.Flip();
     }
 
-    public override void _Notification(int what)
+    protected override void EnterState()
     {
-        base._Notification(what);
-
-        if(what == GameConstants.STATE_NOTIFICATION_ENABLE)
+        characterNode.AnimPlayerNode.Play(GameConstants.ANIM_DASH);
+        characterNode.Velocity = new(characterNode.direction.X,0,characterNode.direction.Y);
+        if(characterNode.Velocity == Vector3.Zero)
         {
-            characterNode.animPlayerNode.Play(GameConstants.ANIM_DASH);
-
-            characterNode.Velocity = new(characterNode.direction.X,0,characterNode.direction.Y);
-
-            if(characterNode.Velocity == Vector3.Zero)
-            {
-                characterNode.Velocity = characterNode.spriteNode.FlipH ? Vector3.Left : Vector3.Right;
-            }
-
-            characterNode.Velocity *= speed;
-
-            dashTimerNode.Start();
-
-            SetPhysicsProcess(true);
+            characterNode.Velocity = characterNode.SpriteNode.FlipH ? Vector3.Left : Vector3.Right;
         }
-        else if(what == GameConstants.STATE_NOTIFICATION_DISABLE)
-        {
-            SetPhysicsProcess(false);
-        }
+        characterNode.Velocity *= speed;
+        dashTimerNode.Start();        
     }
 
     private void HandleDashTimeout()
     {
         characterNode.Velocity = Vector3.Zero;
-        characterNode.stateMachineNode.SwitchState<PlayerIdleState>();
+        characterNode.StateMachineNode.SwitchState<PlayerIdleState>();
     }
 }
