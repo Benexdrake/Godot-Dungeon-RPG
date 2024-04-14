@@ -18,7 +18,6 @@ public partial class PlayerMoveState : PlayerState
 
         if(!characterNode.IsOnFloor())
         {
-            GD.Print("Test");
             Vector3 velocity = characterNode.Velocity;
             velocity.Y -= 9.8f;
             characterNode.Velocity = velocity;
