@@ -76,7 +76,7 @@
 [ext_resource type="Texture2D" uid="uid://dnrfahpqchssp" path="res://Assets/Sprites/Characters/Player/Slashing/Slashing_008.png" id="74_an25j"]
 [ext_resource type="Texture2D" uid="uid://c2jeykhmoy0ou" path="res://Assets/Sprites/Characters/Player/Slashing/Slashing_009.png" id="75_4tnph"]
 [ext_resource type="Texture2D" uid="uid://c70s04vri1yso" path="res://Assets/Sprites/Characters/Player/Slashing/Slashing_010.png" id="76_4vkoy"]
-[ext_resource type="Script" path="res://Scripts/Characters/Player/StateMachine.cs" id="77_1grfp"]
+[ext_resource type="PackedScene" uid="uid://65imvwvjj60d" path="res://Scenes/state_machine.tscn" id="77_lt2oj"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerIdleState.cs" id="78_ark5n"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerMoveState.cs" id="79_kbe6n"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="80_yc1sp"]
@@ -194,6 +194,7 @@ height = 1.56102
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("AnimPlayerNode", "SpriteNode", "StateMachineNode")]
 collision_layer = 2
+collision_mask = 5
 floor_max_angle = 1.55334
 floor_snap_length = 0.2
 script = ExtResource("1_skx5k")
@@ -211,8 +212,7 @@ libraries = {
 "": SubResource("AnimationLibrary_yw2fg")
 }
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("currentState", "states")]
-script = ExtResource("77_1grfp")
+[node name="StateMachine" parent="." node_paths=PackedStringArray("currentState", "states") instance=ExtResource("77_lt2oj")]
 currentState = NodePath("IdleState")
 states = [NodePath("IdleState"), NodePath("MoveState"), NodePath("DashState")]
 

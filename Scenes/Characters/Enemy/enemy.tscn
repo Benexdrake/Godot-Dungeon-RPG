@@ -1,9 +1,10 @@
-[gd_scene load_steps=106 format=3 uid="uid://y3rc6fuqnpys"]
+[gd_scene load_steps=115 format=3 uid="uid://y3rc6fuqnpys"]
 
 [ext_resource type="Texture2D" uid="uid://deddi8blfim0q" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_011.png" id="1_0wwma"]
 [ext_resource type="Texture2D" uid="uid://cu7ni18xcrcu1" path="res://Assets/Sprites/Characters/Enemy Knight/Move/0_Demons_of_Darkness_Walking_000.png" id="1_5v8rg"]
 [ext_resource type="Texture2D" uid="uid://dih12nqw8enmk" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_000.png" id="1_80mm2"]
 [ext_resource type="Texture2D" uid="uid://oejpjvu10c46" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_002.png" id="1_bvekc"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_v82e1"]
 [ext_resource type="Texture2D" uid="uid://b4ccta7ipiabh" path="res://Assets/Sprites/Characters/Enemy Knight/Death/smoke-Fx3_17.png" id="1_xyl2t"]
 [ext_resource type="Texture2D" uid="uid://bmury7mfbfglw" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_001.png" id="3_ivmfh"]
 [ext_resource type="Texture2D" uid="uid://dc5rgcww84jrb" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_003.png" id="4_qmumv"]
@@ -98,6 +99,12 @@
 [ext_resource type="Texture2D" uid="uid://bkmlg27ns7udw" path="res://Assets/Sprites/Characters/Enemy Knight/TakeHit/0_Demons_of_Darkness_Hurt_009.png" id="96_2es8p"]
 [ext_resource type="Texture2D" uid="uid://ctr3a3vj47s6i" path="res://Assets/Sprites/Characters/Enemy Knight/TakeHit/0_Demons_of_Darkness_Hurt_010.png" id="97_4dpi8"]
 [ext_resource type="Texture2D" uid="uid://bya8tcvg4fy7t" path="res://Assets/Sprites/Characters/Enemy Knight/TakeHit/0_Demons_of_Darkness_Hurt_011.png" id="98_0hvlo"]
+[ext_resource type="PackedScene" uid="uid://65imvwvjj60d" path="res://Scenes/state_machine.tscn" id="99_pl5dv"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyIdleState.cs" id="100_rnrqm"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyReturnState.cs" id="102_vbnkn"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyPatrolState.cs" id="103_0crcm"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyChaseState.cs" id="104_8e64b"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyAttackState.cs" id="105_mcmak"]
 
 [sub_resource type="Animation" id="Animation_g3c4f"]
 resource_name = "Idle"
@@ -147,6 +154,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("32_25ljr"), ExtResource("33_xfluj"), ExtResource("34_nx8r4"), ExtResource("35_f6xjw"), ExtResource("36_sbqkq"), ExtResource("37_4vvar"), ExtResource("38_831kv"), ExtResource("39_gs5rf"), ExtResource("40_15nvh"), ExtResource("41_0j784"), ExtResource("42_bdunp"), ExtResource("43_6btjv"), ExtResource("44_jy7vs"), ExtResource("45_1g745"), ExtResource("46_hxtp0"), ExtResource("47_afrhe"), ExtResource("48_8wmam"), ExtResource("49_2k5n5"), ExtResource("50_mpbyf"), ExtResource("51_jlipg"), ExtResource("52_b2u7o"), ExtResource("53_j6als"), ExtResource("54_gdisj"), ExtResource("55_emb5n"), ExtResource("56_unp2o"), ExtResource("57_c6suv"), ExtResource("58_vo3tw"), ExtResource("59_i47tq"), ExtResource("60_c0kgb"), ExtResource("61_yfcpm"), ExtResource("62_w7j4m"), ExtResource("1_xyl2t")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:pixel_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.454545, 0.545455),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0025, 0.0025, 0.0075]
+}
 
 [sub_resource type="Animation" id="Animation_5wcjb"]
 resource_name = "Move"
@@ -193,12 +212,27 @@ _data = {
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_efauy"]
 height = 1.51409
 
-[node name="Enemy" type="CharacterBody3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_o7x4f"]
+radius = 6.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_beiyf"]
+radius = 1.4
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimPlayerNode", "SpriteNode", "StateMachineNode", "AgentNode", "ChaseAreaNode", "AttackAreaNode")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_v82e1")
+AnimPlayerNode = NodePath("AnimationPlayer")
+SpriteNode = NodePath("Sprite3D")
+StateMachineNode = NodePath("StateMachine")
+AgentNode = NodePath("NavigationAgent3D")
+ChaseAreaNode = NodePath("ChaseArea")
+AttackAreaNode = NodePath("AttackArea")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000132084, 0.00679064, -0.00398207)
 pixel_size = 0.0025
-texture = ExtResource("17_b6cmp")
+texture = ExtResource("32_25ljr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -207,3 +241,49 @@ libraries = {
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_efauy")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("currentState", "states") instance=ExtResource("99_pl5dv")]
+currentState = NodePath("IdleState")
+states = [NodePath("IdleState"), NodePath("ReturnState"), NodePath("PatrolState"), NodePath("ChaseState"), NodePath("AttackState")]
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("100_rnrqm")
+
+[node name="ReturnState" type="Node" parent="StateMachine"]
+script = ExtResource("102_vbnkn")
+
+[node name="PatrolState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idleTimerNode")]
+script = ExtResource("103_0crcm")
+idleTimerNode = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/PatrolState"]
+one_shot = true
+
+[node name="ChaseState" type="Node" parent="StateMachine" node_paths=PackedStringArray("timerNode")]
+script = ExtResource("104_8e64b")
+timerNode = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/ChaseState"]
+wait_time = 0.5
+autostart = true
+
+[node name="AttackState" type="Node" parent="StateMachine"]
+script = ExtResource("105_mcmak")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
+debug_path_custom_color = Color(0.752941, 0, 0, 1)
+
+[node name="ChaseArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseArea"]
+shape = SubResource("SphereShape3D_o7x4f")
+
+[node name="AttackArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("SphereShape3D_beiyf")

@@ -5,12 +5,7 @@ public partial class PlayerIdleState : PlayerState
 {
     public override void _PhysicsProcess(double delta)
     {
-        if(!characterNode.IsOnFloor())
-        {
-            Vector3 velocity = characterNode.Velocity;
-            velocity.Y -= 9.8f;
-            characterNode.Velocity = velocity;
-        }
+        base.CheckFloor();
         if(characterNode.direction != Vector2.Zero)
         {
             characterNode.StateMachineNode.SwitchState<PlayerMoveState>();

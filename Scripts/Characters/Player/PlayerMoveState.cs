@@ -16,15 +16,7 @@ public partial class PlayerMoveState : PlayerState
         characterNode.Velocity = new(characterNode.direction.X, 0, characterNode.direction.Y);
         characterNode.Velocity *= Speed;
 
-        if(!characterNode.IsOnFloor())
-        {
-            Vector3 velocity = characterNode.Velocity;
-            velocity.Y -= 9.8f;
-            characterNode.Velocity = velocity;
-        }
-
-        characterNode.MoveAndSlide();
-        characterNode.Flip();
+        base._PhysicsProcess(delta);
     }
 
     public override void _Input(InputEvent @event)
