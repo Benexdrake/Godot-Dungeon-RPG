@@ -4,11 +4,15 @@ using System.Linq;
 
 public partial class StateMachine : Node
 {
-    [Export] private Node currentState;
-    [Export] private Node[] states;
+    private Node currentState;
+    private Node[] states;
 
     public override void _Ready()
     {
+        states = GetChildren().ToArray();
+
+        currentState = states[0];
+
         currentState.Notification(GameConstants.NOTIFICATION_ENTER_STATE);
     }
 

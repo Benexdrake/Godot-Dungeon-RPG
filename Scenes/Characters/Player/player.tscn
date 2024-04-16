@@ -140,6 +140,22 @@ tracks/0/keys = {
 "values": [ExtResource("33_c4r88"), ExtResource("34_ygpds"), ExtResource("35_ju13s"), ExtResource("36_uu4vc"), ExtResource("37_15j1y"), ExtResource("2_pdu5c")]
 }
 
+[sub_resource type="Animation" id="Animation_i0h3d"]
+resource_name = "Death"
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667, 0.733333, 0.8, 0.866667, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("38_5jkid"), ExtResource("39_i0ge5"), ExtResource("40_1f5l5"), ExtResource("41_v064k"), ExtResource("42_mdyb8"), ExtResource("43_to8r2"), ExtResource("44_f7cxw"), ExtResource("45_fley6"), ExtResource("46_f28s8"), ExtResource("47_6cupb"), ExtResource("48_la62k"), ExtResource("49_wici7"), ExtResource("50_jiq3s"), ExtResource("51_b8wcd"), ExtResource("52_34b27")]
+}
+
 [sub_resource type="Animation" id="Animation_p6u4q"]
 resource_name = "Idle"
 loop_mode = 1
@@ -155,23 +171,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("2_ntuus"), ExtResource("3_eifxv"), ExtResource("4_jk6ui"), ExtResource("5_tih00"), ExtResource("6_ud42f"), ExtResource("7_lkdbu"), ExtResource("8_enc7k"), ExtResource("9_3ssy8"), ExtResource("10_jsmhj"), ExtResource("11_fjfdi"), ExtResource("12_5au1d"), ExtResource("13_3jry7"), ExtResource("14_nygxc"), ExtResource("15_nosn1"), ExtResource("16_m1g4e"), ExtResource("17_4yes8"), ExtResource("18_p52fn"), ExtResource("19_gvrvw"), ExtResource("2_ntuus")]
-}
-
-[sub_resource type="Animation" id="Animation_xtdty"]
-resource_name = "Move"
-loop_mode = 1
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("20_kdh8b"), ExtResource("21_lkf4j"), ExtResource("22_exx6x"), ExtResource("1_4ldcv"), ExtResource("23_hud2r"), ExtResource("24_kumd8"), ExtResource("25_sfbho"), ExtResource("26_5wyal"), ExtResource("27_p5l6w"), ExtResource("28_ejos6"), ExtResource("29_xkdon"), ExtResource("30_3o3wv"), ExtResource("20_kdh8b")]
 }
 
 [sub_resource type="Animation" id="Animation_ddmtf"]
@@ -204,9 +203,10 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_i0h3d"]
-resource_name = "Death"
-step = 0.0666667
+[sub_resource type="Animation" id="Animation_xtdty"]
+resource_name = "Move"
+loop_mode = 1
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -214,10 +214,10 @@ tracks/0/path = NodePath("Sprite3D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667, 0.733333, 0.8, 0.866667, 0.933333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("38_5jkid"), ExtResource("39_i0ge5"), ExtResource("40_1f5l5"), ExtResource("41_v064k"), ExtResource("42_mdyb8"), ExtResource("43_to8r2"), ExtResource("44_f7cxw"), ExtResource("45_fley6"), ExtResource("46_f28s8"), ExtResource("47_6cupb"), ExtResource("48_la62k"), ExtResource("49_wici7"), ExtResource("50_jiq3s"), ExtResource("51_b8wcd"), ExtResource("52_34b27")]
+"values": [ExtResource("20_kdh8b"), ExtResource("21_lkf4j"), ExtResource("22_exx6x"), ExtResource("1_4ldcv"), ExtResource("23_hud2r"), ExtResource("24_kumd8"), ExtResource("25_sfbho"), ExtResource("26_5wyal"), ExtResource("27_p5l6w"), ExtResource("28_ejos6"), ExtResource("29_xkdon"), ExtResource("30_3o3wv"), ExtResource("20_kdh8b")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yw2fg"]
@@ -263,9 +263,7 @@ libraries = {
 "": SubResource("AnimationLibrary_yw2fg")
 }
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("currentState", "states") instance=ExtResource("77_lt2oj")]
-currentState = NodePath("IdleState")
-states = [NodePath("IdleState"), NodePath("MoveState"), NodePath("DashState"), NodePath("AttackState"), NodePath("DeathState")]
+[node name="StateMachine" parent="." instance=ExtResource("77_lt2oj")]
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("78_ark5n")

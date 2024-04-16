@@ -6,6 +6,7 @@ public partial class EnemyChaseState : EnemyState
 {
     [Export] private Timer timerNode;
     private CharacterBody3D target;
+
     protected override void EnterState()
     {
         characterNode.AnimPlayerNode.Play(GameConstants.ANIM_MOVE);
