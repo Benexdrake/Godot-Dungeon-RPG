@@ -14,11 +14,12 @@ public partial class PlayerIdleState : PlayerState
 
     public override void _Input(InputEvent @event)
     {
-        if(Input.IsActionJustPressed(GameConstants.INPUTS_Dash))
-        {
-            characterNode.StateMachineNode.SwitchState<PlayerDashState>();
-        }
+        CheckForAttackInput();
+
+        CheckForDashInput();
     }
+
+
 
     protected override void EnterState()
     {

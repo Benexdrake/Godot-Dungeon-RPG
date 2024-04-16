@@ -5,9 +5,7 @@ public abstract partial class CharacterState : Node
      
     public override void _Ready()
     {
-        characterNode = GetOwner<Character>();
-        SetPhysicsProcess(false);
-        SetProcessInput(false);
+        Ready();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -44,6 +42,13 @@ public abstract partial class CharacterState : Node
             velocity.Y -= 9.8f;
             characterNode.Velocity = velocity;
         }
+    }
+
+    protected void Ready()
+    {
+        characterNode = GetOwner<Character>();
+        SetPhysicsProcess(false);
+        SetProcessInput(false);
     }
 
     protected virtual void EnterState()

@@ -1,0 +1,23 @@
+using System;
+using Godot;
+
+[GlobalClass]
+public partial class StatResource : Resource
+{
+    public Action OnZero;
+    [Export] public Stat StatType { get; set; }
+    private float _statValues;
+    [Export] public float StatValue 
+    { 
+        get => _statValues; 
+        set
+        {
+            _statValues = Mathf.Clamp(value,0,Mathf.Inf);
+
+            if(_statValues == 0)
+            {
+                OnZero?.Invoke();
+            }
+        }  
+    }
+}

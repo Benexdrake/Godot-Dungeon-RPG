@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dg1h8t22tjntj"]
+[gd_scene load_steps=11 format=3 uid="uid://dg1h8t22tjntj"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Main.cs" id="1_wr8lh"]
 [ext_resource type="PackedScene" uid="uid://bf5flr8ini2vv" path="res://Scenes/Characters/Player/player.tscn" id="2_cgvhq"]
@@ -28,27 +28,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 10
-
-[sub_resource type="Curve3D" id="Curve3D_7rufb"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.62884, 0, -8.93711, 0, 0, 0, 0, 0, 0, 3.64567, 0, -8.9052, 0, 0, 0, 0, 0, 0, 3.43828, 0, -4.11934, 0, 0, 0, 0, 0, 0, -0.645652, 0, -1.07234, 0, 0, 0, 0, 0, 0, -3.80432, 0, -3.44932, 0, 0, 0, 0, 0, 0, -3.62884, 0, -8.93711),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
-}
-point_count = 6
-
-[sub_resource type="Curve3D" id="Curve3D_53g5n"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.449005, 0, -20.0505, 0, 0, 0, 0, 0, 0, -2.51594, 0, -21.3497, 0, 0, 0, 0, 0, 0, -2.81122, 0, -27.4029, 0, 0, 0, 0, 0, 0, -3.40177, 0, -33.0427, 0, 0, 0, 0, 0, 0, -0.419476, 0, -34.6667, 0, 0, 0, 0, 0, 0, 2.79904, 0, -31.3596, 0, 0, 0, 0, 0, 0, 2.56282, 0, -23.2395, 0, 0, 0, 0, 0, 0, -0.449005, 0, -20.0505),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 8
-
-[sub_resource type="Curve3D" id="Curve3D_6ldhb"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9.44464, 0, -33.6609, 0, 0, 0, 0, 0, 0, 16.4017, 0, -34.5564, 0, 0, 0, 0, 0, 0, 21.1202, 0, -32.3177, 0, 0, 0, 0, 0, 0, 23.5655, 0, -26.1527, 0, 0, 0, 0, 0, 0, 19.3292, 0, -23.9829, 0, 0, 0, 0, 0, 0, 13.7842, 0, -22.8808, 0, 0, 0, 0, 0, 0, 10.4779, 0, -25.9461, 0, 0, 0, 0, 0, 0, 8.96247, 0, -18.5757, 0, 0, 0, 0, 0, 0, 17.2628, 0, -15.8893, 0, 0, 0, 0, 0, 0, 22.6011, 0, -18.1624, 0, 0, 0, 0, 0, 0, 15.9196, 0, -27.1515, 0, 0, 0, 0, 0, 0, 8.20476, 0, -30.8023, 0, 0, 0, 0, 0, 0, 9.44464, 0, -33.6609),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 13
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_wr8lh")
@@ -83,7 +62,7 @@ metadata/_editor_floor_ = Vector3(0, 2, 0)
 mesh_library = ExtResource("3_e6m6i")
 cell_size = Vector3(1, 1, 1)
 data = {
-"cells": PackedInt32Array(262134, 1, 10, 262120, 1, 10, 262106, 1, 10, 262094, 6, 10, 196619, 1, 10, 196631, 1, 10, 196641, 1, 10, 196645, 6, 10, 262138, 65528, 10, 196613, 65528, 10, 458749, 65498, 8, 393219, 65498, 8, 393214, 65499, 9, 327681, 65499, 9, 655357, 65519, 8, 589826, 65519, 8, 327671, 0, 8, 327647, 0, 8, 262152, 0, 8, 262176, 0, 8, 524282, 65511, 10, 458757, 65511, 10)
+"cells": PackedInt32Array(262134, 1, 10, 262120, 1, 10, 262106, 1, 10, 262094, 6, 10, 196619, 1, 10, 196631, 1, 10, 196641, 1, 10, 196645, 6, 10, 262138, 65528, 10, 196613, 65528, 10, 458749, 65498, 8, 393219, 65498, 8, 393214, 65499, 9, 327681, 65499, 9, 655357, 65519, 8, 589826, 65519, 8, 327671, 0, 8, 327647, 0, 8, 262152, 0, 8, 262176, 0, 8, 524282, 65511, 10)
 }
 metadata/_editor_floor_ = Vector3(0, 7, 0)
 
@@ -115,6 +94,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.495, 5.79121, -14.8149)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45673, 0.43512, 0.47615)
 shape = SubResource("BoxShape3D_gdc8f")
 
+[node name="Lights" type="Node3D" parent="Enviroment"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58755, 4.18976, -7.47343)
+light_color = Color(1, 0.631373, 0.392157, 1)
+omni_range = 4.20753
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52386, 8.20426, -24.6708)
+light_color = Color(1, 0.631373, 0.392157, 1)
+omni_range = 4.20753
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4733, 4.18976, 1.56696)
+light_color = Color(1, 0.631373, 0.392157, 1)
+omni_range = 4.20753
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2653, 4.18976, 1.56696)
+light_color = Color(1, 0.631373, 0.392157, 1)
+omni_range = 4.20753
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.4401, 4.18976, 1.56696)
+light_color = Color(1, 0.631373, 0.392157, 1)
+omni_range = 4.20753
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.56315, 4.18976, 1.65696)
+light_color = Color(1, 0.631373, 0.392157, 1)
+omni_range = 4.20753
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6366, 4.18976, 1.45476)
+light_color = Color(1, 0.631373, 0.392157, 1)
+omni_range = 4.20753
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.588, 4.18976, 1.45476)
+light_color = Color(1, 0.631373, 0.392157, 1)
+omni_range = 4.20753
+
 [node name="Enemies" type="Node3D" parent="."]
 
 [node name="Path3D" type="Path3D" parent="Enemies"]
@@ -124,15 +145,3 @@ curve = SubResource("Curve3D_2q2ab")
 [node name="Enemy" parent="Enemies/Path3D" node_paths=PackedStringArray("PathNode") instance=ExtResource("4_0eecd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8455, 0.875459, -2.4424)
 PathNode = NodePath("..")
-
-[node name="Path3D2" type="Path3D" parent="Enemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13856, 0)
-curve = SubResource("Curve3D_7rufb")
-
-[node name="Path3D3" type="Path3D" parent="Enemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.49215, 0.0295277)
-curve = SubResource("Curve3D_53g5n")
-
-[node name="Path3D4" type="Path3D" parent="Enemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.29036, 0)
-curve = SubResource("Curve3D_6ldhb")
