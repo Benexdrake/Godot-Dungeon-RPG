@@ -18,9 +18,7 @@ public partial class StateMachine : Node
 
     public void SwitchState<T>()
     {
-        Node newState = null;
-
-        newState = states.First(x => x is T);
+        var newState = states.First(x => x is T);
 
         if(newState == null)
             return;
